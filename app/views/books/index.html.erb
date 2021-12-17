@@ -1,0 +1,35 @@
+<h1 class="text-center">Books</h1>
+<%= form_with url: books_path, method: :get do |f| %>
+  <div class="row">
+    <div class="col-md-6">
+      <%= text_field_tag :search, params[:search], class: 'form-control', placeholder: 'Search by Title', autocomplete: 'off' %>
+    </div>
+    <div class="col-md-6">
+      <%= text_field_tag :price, params[:price], class: 'form-control', placeholder: 'Search by Price', autocomplete: 'off' %>
+    </div>
+  </div>
+  <%= f.submit "Search", class: 'btn btn-primary search-btn' %>
+<% end %>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Price</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%# if @books.present? %>
+      <% @books.each do |book| %>
+        <tr>
+          <td><%= book.title %></td>
+          <td><%= book.description %></td>
+          <td><%= book.price %></td>
+          <td><%= link_to "Add Tags", edit_book_path(book), class: 'btn btn-primary' %></td>
+        </tr>
+      <% end %>
+    <%# end %>
+  </tbody>
+</table>
+<div><%= link_to 'Next 10', books_path, class: 'btn btn-primary' %></div>
