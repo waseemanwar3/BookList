@@ -1,14 +1,2 @@
 @import 'bootstrap/scss/bootstrap';
-
-.form-group {
-  margin-top: 20px;
-}
-
-.form-control, .search-btn {
-  margin-top: 10px;
-}
-
-#book_tags {
-  height: 40px;
-  width: 100px;
-}
+@import 'style.scss';

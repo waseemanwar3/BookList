@@ -10,8 +10,8 @@
   </div>
   <div class="row">
     <div class="col-md-3">Tags</div>
-    <% @book.tags.each do |tag_id| %>
-      <div class="col-md-1"><%= @book.tag(tag_id) %></div>
+    <% @book.tags.each do |tag| %>
+      <div class="col-md-1"><%= tag.name %></div>
     <% end %>
   </div>
   <%= link_to 'Go to books', books_path, class: 'btn btn-primary' %>

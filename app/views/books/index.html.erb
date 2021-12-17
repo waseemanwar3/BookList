@@ -8,9 +8,15 @@
       <%= text_field_tag :price, params[:price], class: 'form-control', placeholder: 'Search by Price', autocomplete: 'off' %>
     </div>
   </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= text_field_tag :tag, params[:tag], class: 'form-control', placeholder: 'Search by Tag', autocomplete: 'off' %>
+    </div>
+  </div>
   <%= f.submit "Search", class: 'btn btn-primary search-btn' %>
 <% end %>
 <table class="table">
+  <%= link_to "New Book", new_book_path, class: 'btn btn-primary new-book' %>
   <thead>
     <tr>
       <th scope="col">Title</th>

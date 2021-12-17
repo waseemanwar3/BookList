@@ -1,12 +1,22 @@
 <%= form_for @book do |f| %>
   <div class="form-group">
     <label>Book Title</label>
-    <%= f.text_field :title, class: 'form-control', readonly: true %>
+    <%= f.text_field :title, class: 'form-control', readonly: @book.persisted? ? true : nil %>
+  </div>
+
+  <div class="form-group">
+    <label>Book Description</label>
+    <%= f.text_field :description, class: 'form-control', readonly: @book.persisted? ? true : nil %>
+  </div>
+
+  <div class="form-group">
+    <label>Book Price</label>
+    <%= f.number_field :price, class: 'form-control', readonly: @book.persisted? ? true : nil %>
   </div>
 
   <div class="form-group">
     <label>Book Tags</label>
-    <%= f.select :tags, options_for_select(@tags.collect { |tag| [tag.name, tag.id] }, @book.tags), {prompt: "select", class: 'form-control'}, {multiple: true} %>
+    <%= f.select :tag_ids, options_for_select(@tags.collect { |tag| [tag.name, tag.id] }, @book.book_tags.pluck(:tag_id)), {prompt: "select", class: 'form-control'}, {multiple: true} %>
   </div>
 
   <%= f.submit 'Submit', class: 'btn btn-primary' %>
