@@ -1,7 +1,7 @@
 class Book < ApplicationRecord
   serialize :tags, Array
 
-  has_many :book_tags
+  has_many :book_tags, dependent: :destroy
   has_many :tags, through: :book_tags
 
   scope :by_name, -> (name) { where('title LIKE ?', "%#{name}%") }
